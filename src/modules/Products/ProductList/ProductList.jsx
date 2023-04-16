@@ -39,6 +39,7 @@ const ProductList = ({ products, deleteProduct }) => {
         }
       })
     : filteredProducts;
+  console.log(sortedProducts)
 
   return (
     <div>
@@ -51,12 +52,6 @@ const ProductList = ({ products, deleteProduct }) => {
               onClick={() => sortProducts('id')}
             >
               ID
-            </button>
-            <button
-              onClick={() => sortProducts('name')}
-              className={styles.filter_button}
-            >
-              Name
             </button>
             <button
               onClick={() => sortProducts('price')}
@@ -76,10 +71,10 @@ const ProductList = ({ products, deleteProduct }) => {
               All
             </button>
             <button
-              onClick={() => filterProducts('Electronics')}
+              onClick={() => filterProducts('Smartphones')}
               className={styles.filter_button}
             >
-              Electronics
+              Smartphones
             </button>
             <button
               onClick={() => filterProducts('Clothing')}
@@ -118,7 +113,11 @@ const ProductList = ({ products, deleteProduct }) => {
               <td>{product.description}</td>
               <td>{product.price}</td>
               <td>
-                <img src={product.photo} alt={product.title} />
+                <img
+                  src={product.images[0]}
+                  alt={product.title}
+                  width="190px"
+                />
               </td>
               <td>{product.rating}</td>
               <td>{product.stock}</td>
@@ -141,11 +140,6 @@ const ProductList = ({ products, deleteProduct }) => {
 
 export default ProductList;
 ProductList.defaultProps = {
-  products: PropTypes.array.isRequired,
-  deleteProduct: PropTypes.func.isRequired,
-};
-
-ProductList.propTypes = {
-  products: PropTypes.array.isRequired,
+  products: PropTypes.object.isRequired,
   deleteProduct: PropTypes.func.isRequired,
 };

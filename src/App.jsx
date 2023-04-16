@@ -10,7 +10,7 @@ function App() {
   return (
     <Provider store={store}>
       
-        <BrowserRouter basename="/react-test-task">
+        <BrowserRouter>
           <Header />
           <Navigation />
           <UserRoutes />

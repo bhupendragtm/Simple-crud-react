@@ -39,7 +39,6 @@ const ProductList = ({ products, deleteProduct }) => {
         }
       })
     : filteredProducts;
-  console.log(sortedProducts)
 
   return (
     <div>

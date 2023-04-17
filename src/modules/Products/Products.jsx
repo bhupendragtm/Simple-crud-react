@@ -16,22 +16,15 @@ import styles from './Products.module.scss';
 const Products = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      try {
         setLoading(true);
         const data = await getAllProducts();
         setItems(data.products);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
     };
     fetchProducts();
-  }, [setError, setItems, setLoading, loading, error]);
+  }, [setLoading, loading]);
 
   const filter = useSelector(getFilter);
   const handleFilter = ({ target }) => dispatch(setFilter(target.value));
